@@ -1,0 +1,25 @@
+GET /abcd?uname=zhoufy&pwd=123456 HTTP/1.1
+Host: localhost:8888
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+
+POST /abcd? HTTP/1.1
+Host: localhost:8888
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Content-Type: text/plain;charset=UTF-8
+Origin: moz-extension://91f47599-8b0e-4635-923d-69b644f5ec2b
+Content-Length: 23
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+uname=zhoufy&pwd=123456
