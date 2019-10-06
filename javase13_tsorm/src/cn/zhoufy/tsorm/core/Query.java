@@ -17,7 +17,7 @@ import cn.zhoufy.tsorm.util.RefUtils;
 
 public abstract class Query {
 	/**
-	 * 模板方法模式，将代码进行重用；queryrows() and queryvalue()  jdbc的重用！
+	 * 模板方法模式，将代码进行重用；queryrows() and queryvalue()；jdbc的重用！
 	 * @param sql
 	 * @param params
 	 * @param clazz

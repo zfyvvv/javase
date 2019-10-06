@@ -8,7 +8,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
- * 1、具体解析类，
+ * 1、用于XML解析时，具体解析类，
  * @author DELL
  *
  */
