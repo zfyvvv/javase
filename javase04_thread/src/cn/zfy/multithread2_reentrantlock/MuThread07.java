@@ -17,15 +17,13 @@ import cn.zfy.test.Test02;
  *Condition，为lock增加条件；但条件满足时，做什么事情，如加锁或解锁，如等待或唤醒；
  *
  *3.当目前为止，并发编程的基础知识已经将完了，知识基础知识哦；
- *
- * 
  * @author DELL
  *
  */
 public class MuThread07 {
 	public static void main(String[] args) {
 		Container07<String> container=new Container07<>();
-		//启动12个消费者；
+		//启动50个消费者；
 		for(int i=0;i<10;i++) {
 			new Thread(new Runnable() {
 				@Override
@@ -43,7 +41,7 @@ public class MuThread07 {
 			e.printStackTrace();
 		}
 		
-		//启动12个生产者；
+		//启动50个生产者；
 		for(int i=0;i<2;i++) {
 			new Thread(new Runnable() {
 				@Override
@@ -57,7 +55,6 @@ public class MuThread07 {
 	}
 }
 
-//是在容器上上锁，还是在运行程序中上锁？-->容器里面上锁；
 //同步容器，里面的方法都是同步的；
 //有了lock，不用synchronized；
 class Container07<E>{

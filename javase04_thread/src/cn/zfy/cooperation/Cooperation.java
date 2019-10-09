@@ -11,6 +11,7 @@ public class Cooperation {
 	public static void main(String[] args) {
 		//先来一个缓冲区，后来分别来一个生产者和消费者，
 		SynContainer sc=new SynContainer();
+		
 		Productor p=new Productor(sc);
 		Consumer c=new Consumer(sc);
 		

@@ -13,8 +13,6 @@ import javax.naming.TimeLimitExceededException;
  *不是真正的锁，实际是一个标记；
  *多线程锁定同一个对象，不可重入；
  *
- *
- *
  * @author DELL
  *
  */

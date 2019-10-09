@@ -5,6 +5,7 @@ public class SetLinkedList {
 	Node first;
 	//尾节点；
 	Node last;
+	//长度
 	private int size;
 	
 	//增

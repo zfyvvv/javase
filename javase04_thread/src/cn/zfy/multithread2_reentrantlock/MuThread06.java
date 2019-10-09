@@ -19,14 +19,13 @@ import cn.zfy.test.Test02;
  * 
  * 3.JDK1.7和现在的很多框架兼容，但是学springCloud时，建议学JDK1.8；
  * 
- * 
  * @author DELL
  *
  */
 public class MuThread06 {
 	public static void main(String[] args) {
 		Container06<String> container=new Container06<>();
-		//启动12个消费者；
+		//启动50个消费者；
 		for(int i=0;i<10;i++) {
 			new Thread(new Runnable() {
 				@Override
@@ -44,12 +43,12 @@ public class MuThread06 {
 			e.printStackTrace();
 		}
 		
-		//启动12个生产者；
+		//启动50个生产者；
 		for(int i=0;i<2;i++) {
 			new Thread(new Runnable() {
 				@Override
 				public void run() {
-					for(int j=0;j<25;j++) {
+					for(int j=0;j<20;j++) {
 					container.put("container value"+j);
 					}
 				}
@@ -58,7 +57,6 @@ public class MuThread06 {
 	}
 }
 
-//是在容器上上锁，还是在运行程序中上锁？-->容器里面上锁；
 //同步容器，里面的方法都是同步的；
 class Container06<E>{
 	private final LinkedList<E> list=new LinkedList<>();

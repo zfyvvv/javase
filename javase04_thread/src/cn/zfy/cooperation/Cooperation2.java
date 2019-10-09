@@ -137,8 +137,6 @@ class Movie {
 	}
 }
 
-
-
 class Player implements Runnable {
 	private Movie m;
 	
