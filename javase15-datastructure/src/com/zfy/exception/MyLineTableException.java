@@ -1,4 +1,4 @@
-package com.zfy.linetable;
+package com.zfy.exception;
 
 public class MyLineTableException extends RuntimeException {
 

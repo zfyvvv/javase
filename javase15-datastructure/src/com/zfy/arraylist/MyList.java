@@ -1,4 +1,4 @@
-package com.zfy.linetable;
+package com.zfy.arraylist;
 
 public interface MyList {
 	public int size();
