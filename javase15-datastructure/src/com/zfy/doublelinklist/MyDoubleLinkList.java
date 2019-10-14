@@ -6,7 +6,7 @@ import com.zfy.exception.MyLineTableException;
 public class MyDoubleLinkList implements MyList{
 	private Nodee first;
 	private Nodee last;
-	private int  size;
+	private int size;
 
 	@Override
 	public int size() {
@@ -38,28 +38,38 @@ public class MyDoubleLinkList implements MyList{
 		if(i<0 || i>size) {
 			throw new MyLineTableException("数组索引越界异常："+i);
 		}
-		//新建需要插入的节点；
-		Nodee newNodee=new Nodee(e);
+
 		//根据i的位置；找出指针位置；新节点在给位置后插入；
 		Nodee p=first;
 		for(int j=0;j<i;j++) {
 			p=p.getNext();
 		}
-		if(first!=null) {
-			//新节点的next连接后一个前节点；
-			newNodee.setNext(p.getNext());
-			p.setPre(newNodee);
-			//连接前一个节点；
-			p.setNext(newNodee);
-			newNodee.setPre(p);
-			
-		}else {
+		//新建需要插入的节点；
+		Nodee newNodee=new Nodee(e);
+		
+		if(first==null) {//当i=0时；插入的位置是第一个；
 			//新节点的next连接后一个前节点last；
-			newNodee.setNext(last);
-			last.setPre(newNodee);
+			newNodee.setNext(null);
 			//连接前一个节点；
-			first.setNext(newNodee);
-			newNodee.setPre(first);
+			newNodee.setPre(null);
+			first=newNodee;
+			last=newNodee;
+			
+		}else if(p.getNext()==null){//当i=size时；插入的位置是最后一个；
+			//修改当前节点的前后节点；
+			//新节点的next连接后一个前节点；
+			newNodee.setPre(p);
+			newNodee.setNext(null);
+			//连接前一个节点；
+			last.setNext(newNodee);
+			last=newNodee;
+			
+		}else{//在中间插入；
+			newNodee.setPre(p);
+			newNodee.setNext(p.getNext());
+			
+			p.setNext(newNodee);
+			p.getNext().setPre(newNodee);
 		}
 		//元素个数增加；
 		size++;
@@ -85,8 +95,11 @@ public class MyDoubleLinkList implements MyList{
 
 	@Override
 	public Object get(int i) {
-		// TODO Auto-generated method stub
-		return null;
+		Nodee p=first;
+		for(int j=0;j<i;j++) {
+			p=p.getNext();
+		}
+		return p.getData();
 	}
 
 	@Override
