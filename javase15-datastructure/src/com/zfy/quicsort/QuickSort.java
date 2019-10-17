@@ -1,3 +1,4 @@
+package com.zfy.quicsort;
 import java.util.Arrays;
 
 public class QuickSort {

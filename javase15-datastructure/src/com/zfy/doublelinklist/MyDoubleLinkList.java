@@ -1,11 +1,13 @@
 package com.zfy.doublelinklist;
 
 import com.zfy.arraylist.MyList;
+import com.zfy.btree.Node;
 import com.zfy.exception.MyLineTableException;
 
 public class MyDoubleLinkList implements MyList{
-	private Nodee first;
-	private Nodee last;
+	//新建两个空节点，方便操作，一定要new出来；
+	private Nodee first=new Nodee();
+	private Nodee last=new Nodee();
 	private int size;
 
 	@Override
@@ -44,10 +46,21 @@ public class MyDoubleLinkList implements MyList{
 		for(int j=0;j<i;j++) {
 			p=p.getNext();
 		}
+		//当i=0时，此时的指针P还是指向first；相当于队首添加；
+		//当i=size时，此时的指针P还是指向last；相当于队尾添加；
+		//当0<i<size时，此时的指针P还是指向下标为n的节点；相当于队中添加；
+		
+		
 		//新建需要插入的节点；
 		Nodee newNodee=new Nodee(e);
 		
-		if(first==null) {//当i=0时；插入的位置是第一个；
+		newNodee.setPre(p);
+		newNodee.setNext(p.getNext());
+		
+		p.setNext(newNodee);
+		p.getNext().setPre(newNodee);
+		
+		/*if(first==null) {//当i=0时；插入的位置是第一个；
 			//新节点的next连接后一个前节点last；
 			newNodee.setNext(null);
 			//连接前一个节点；
@@ -70,7 +83,7 @@ public class MyDoubleLinkList implements MyList{
 			
 			p.setNext(newNodee);
 			p.getNext().setPre(newNodee);
-		}
+		}*/
 		//元素个数增加；
 		size++;
 	}
@@ -99,7 +112,7 @@ public class MyDoubleLinkList implements MyList{
 		for(int j=0;j<i;j++) {
 			p=p.getNext();
 		}
-		return p.getData();
+		return p.getNext().getData();
 	}
 
 	@Override
@@ -107,5 +120,22 @@ public class MyDoubleLinkList implements MyList{
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb=new StringBuilder("[");
+		Nodee p=first;
+		for(int i=0;i<size;i++) {
+			p=p.getNext();
+			if(i<size-1) {
+			sb.append(p.getData()).append(",");
+			}else {
+				sb.append(p.getData());
+			}
+		}
+		sb=sb.append("]");
+		return sb.toString();
+	}
+	
 
 }

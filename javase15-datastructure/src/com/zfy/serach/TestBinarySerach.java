@@ -5,7 +5,7 @@ import java.awt.RenderingHints.Key;
 /**
  * 1.功能：给定value，返回该value的索引；前提，该数组已经排好序了；
  * 
- * 2.T(n)=O(log2N);S(n)=O();
+ * 2.
  * 
  * 
  * @author DELL
@@ -29,6 +29,7 @@ public class TestBinarySerach {
 	}
 	
 	//非递归实现方式；
+	//T(n)=O(log2N);S(n)=O(1);
 	public static int bianrySerach(int[] arr,int value) {
 		//指定low和high;
 		int low=0;
@@ -50,18 +51,19 @@ public class TestBinarySerach {
 	}
 	
 	//递归实现方式；
-		public static int bianrySerachByRecursive(int[] arr,int value,int low,int high) {
-			//递归结束条件；
-			if(low>high) {
-				return -1;
-			}
-			int mid=(low+high)/2;
-			if(value==arr[mid]) {
-				return mid;
-			}else if (value<arr[mid]) {
-				return bianrySerachByRecursive(arr, value, low, mid-1);
-			}else {//value>arr[mid]
-				return bianrySerachByRecursive(arr, value, mid+1, high);
-			}
+	//T(n)=O(log2N);S(n)=O(1*log2N)=O(log2N);
+	public static int bianrySerachByRecursive(int[] arr,int value,int low,int high) {
+		//递归结束条件；
+		if(low>high) {
+			return -1;
 		}
+		int mid=(low+high)/2;
+		if(value==arr[mid]) {
+			return mid;
+		}else if (value<arr[mid]) {
+			return bianrySerachByRecursive(arr, value, low, mid-1);
+		}else {//value>arr[mid]
+			return bianrySerachByRecursive(arr, value, mid+1, high);
+		}
+	}
 }
