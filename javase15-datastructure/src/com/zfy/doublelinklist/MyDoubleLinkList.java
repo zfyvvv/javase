@@ -46,44 +46,25 @@ public class MyDoubleLinkList implements MyList{
 		for(int j=0;j<i;j++) {
 			p=p.getNext();
 		}
-		//当i=0时，此时的指针P还是指向first；相当于队首添加；
-		//当i=size时，此时的指针P还是指向last；相当于队尾添加；
-		//当0<i<size时，此时的指针P还是指向下标为n的节点；相当于队中添加；
-		
-		
 		//新建需要插入的节点；
 		Nodee newNodee=new Nodee(e);
 		
+		//双向链表是4步；先设置newNodee的前驱（前节点）和后继（后节点），后设置后节点的前驱，后搞定前节点的后继；
+		//1.把P赋值给newNodee的前驱；2.把p.next赋值给newNodee的后继；
+		//3.把newNodee赋值给p.next的前驱；4.把newNodee赋值给p的后继；
+		
+		if(p.getNext()==null) {//从空链表开始插入；条件为头节点为first的后继为null；
+			newNodee.setPre(first);
+			newNodee.setNext(last);
+			p.setNext(newNodee);
+			last.setPre(newNodee);
+			
+		}else {
 		newNodee.setPre(p);
 		newNodee.setNext(p.getNext());
-		
 		p.setNext(newNodee);
 		p.getNext().setPre(newNodee);
-		
-		/*if(first==null) {//当i=0时；插入的位置是第一个；
-			//新节点的next连接后一个前节点last；
-			newNodee.setNext(null);
-			//连接前一个节点；
-			newNodee.setPre(null);
-			first=newNodee;
-			last=newNodee;
-			
-		}else if(p.getNext()==null){//当i=size时；插入的位置是最后一个；
-			//修改当前节点的前后节点；
-			//新节点的next连接后一个前节点；
-			newNodee.setPre(p);
-			newNodee.setNext(null);
-			//连接前一个节点；
-			last.setNext(newNodee);
-			last=newNodee;
-			
-		}else{//在中间插入；
-			newNodee.setPre(p);
-			newNodee.setNext(p.getNext());
-			
-			p.setNext(newNodee);
-			p.getNext().setPre(newNodee);
-		}*/
+		}
 		//元素个数增加；
 		size++;
 	}
@@ -91,28 +72,51 @@ public class MyDoubleLinkList implements MyList{
 	@Override
 	public void remove() {
 		// TODO Auto-generated method stub
-		
+		remove(size-1);
 	}
 
 	@Override
 	public void remove(int i) {
-		// TODO Auto-generated method stub
+		if(i<0 || i>size) {
+			throw new MyLineTableException("数组索引越界异常："+i);
+		}
 		
+		Nodee p=first.getNext();
+		for(int j=0;j<i;j++) {
+			p=p.getNext();
+		}
+		System.out.println("##");
+		System.out.println(p.getPre().getData());
+		System.out.println(p.getData());
+		System.out.println(p.getNext().getData());
+		System.out.println("##");
+		//把p的后继赋值给p的前驱的后继；把p的前驱赋值给p的后继的前驱；
+		p.getPre().setNext(p.getNext());
+		p.getNext().setPre(p.getPre());
+		size--;
 	}
 
 	@Override
 	public void remove(Object e) {
-		// TODO Auto-generated method stub
-		
+		Nodee p=first.getNext();
+		int index=-1;
+		for(int i=0;i<size;i++) {
+			if(p.getData().equals(e)) {
+				index=i;
+			}
+			p=p.getNext();
+		}
+		System.out.println(index);
+		remove(index);
 	}
 
 	@Override
 	public Object get(int i) {
-		Nodee p=first;
+		Nodee p=first.getNext();
 		for(int j=0;j<i;j++) {
 			p=p.getNext();
 		}
-		return p.getNext().getData();
+		return p.getData();
 	}
 
 	@Override

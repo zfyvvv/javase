@@ -5,7 +5,7 @@ import java.awt.RenderingHints.Key;
 /**
  * 1.功能：给定value，返回该value的索引；前提，该数组已经排好序了；
  * 
- * 2.
+ * 2.二分查找；
  * 
  * 
  * @author DELL
@@ -66,4 +66,14 @@ public class TestBinarySerach {
 			return bianrySerachByRecursive(arr, value, mid+1, high);
 		}
 	}
+	
+	//差值查找；
+	//本质是改变每次low和hight的值的变化范围；
+	
+	//斐波那契查找；
+	//本质是改变每次low和hight的值，有序变化；
+	
+	
+	
+	
 }

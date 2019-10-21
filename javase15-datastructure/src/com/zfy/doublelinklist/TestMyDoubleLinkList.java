@@ -9,12 +9,16 @@ public class TestMyDoubleLinkList {
 		list.add("aaa");
 		list.add("bbb");
 		list.add("ccc");
-		//list.add("ddd");
-		list.add(1,"eee");
+		list.add("ddd");
+		//list.add(1,"eee");
 		System.out.println(list.size());
 		System.out.println(list.get(0));
 		System.out.println(list.get(1));
 		System.out.println(list.get(2));
+		System.out.println(list.get(3));
+		System.out.println(list.toString());
+		list.remove(1);
+		//System.out.println(list.size());
 		System.out.println(list.toString());
 	}
 
